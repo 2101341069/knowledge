@@ -68,7 +68,7 @@ const config: QuartzConfig = {
      *
      * 本地预览时此值不影响使用
      */
-    baseUrl: "your-username.github.io",
+    baseUrl: "2101341069.github.io",
 
     /**
      * 忽略的文件和文件夹
