@@ -1,3 +1,220 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ===== 自定义美化样式 =====
+
+// 滚动条美化
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--darkgray);
+  }
+}
+
+// 页面过渡动画
+.page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 标题装饰
+article {
+  > h1 {
+    position: relative;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--lightgray);
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary), var(--tertiary));
+    }
+  }
+}
+
+// 引用块美化
+blockquote {
+  position: relative;
+  background: var(--highlight);
+  border-left: none;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0 12px 12px 0;
+  margin: 1.5rem 0;
+  
+  &::before {
+    content: "\201C";
+    position: absolute;
+    left: -8px;
+    top: -10px;
+    font-size: 4rem;
+    color: var(--secondary);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+  }
+  
+  p {
+    margin: 0;
+    font-style: italic;
+    color: var(--darkgray);
+  }
+}
+
+// 链接悬停效果
+a {
+  &.internal {
+    position: relative;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary), var(--tertiary));
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
+
+// 表格美化
+.table-container {
+  > table {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    
+    th {
+      background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+      color: white;
+      font-weight: 600;
+      
+      &:first-child {
+        border-radius: 12px 0 0 0;
+      }
+      &:last-child {
+        border-radius: 0 12px 0 0;
+      }
+    }
+    
+    tr:hover {
+      background: var(--highlight);
+    }
+  }
+}
+
+// 代码块美化
+pre {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none;
+  
+  > code {
+    padding: 1rem;
+  }
+}
+
+// 标签样式
+.tag-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  background: var(--highlight);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin: 0.2rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--secondary);
+    color: white;
+    transform: translateY(-2px);
+  }
+}
+
+// 列表样式优化
+ul, ol {
+  li {
+    position: relative;
+    padding-left: 0.5rem;
+    
+    &::marker {
+      color: var(--secondary);
+    }
+  }
+}
+
+// 侧边栏美化
+.sidebar {
+  .toc, .graph {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+}
+
+// 首页特殊样式
+[data-slug="index"] {
+  article {
+    > h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      border-bottom: none;
+      
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+// 搜索框美化
+.search {
+  input {
+    border-radius: 20px;
+    border: 2px solid var(--lightgray);
+    transition: all 0.3s ease;
+    
+    &:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px var(--highlight);
+    }
+  }
+}
+
+// 暗色模式适配
+@media (prefers-color-scheme: dark) {
+  .table-container > table {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
