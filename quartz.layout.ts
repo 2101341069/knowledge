@@ -50,27 +50,11 @@ export const sharedPageComponents: SharedLayout = {
    * 常用于:
    * - 评论区（Comments）
    * - 相关文章推荐
+   *
+   * 注意: 评论功能需要配置 Giscus
+   * 如需启用，参考: https://quartz.jzhao.xyz/features/comments
    */
-  afterBody: [
-    // 评论区组件（需要配置 Giscus）
-    // 参考: https://quartz.jzhao.xyz/features/comments
-    Component.Comments({
-      provider: 'giscus',
-      options: {
-        // ⚠️ 以下配置需要替换为你自己的 Giscus 配置
-        // 获取方式: https://giscus.app
-        repo: 'your-username/your-repo' as `${string}/${string}`,
-        repoId: 'your-repo-id',
-        category: 'Announcements',
-        categoryId: 'your-category-id',
-        mapping: 'pathname',           // 使用路径名作为讨论标识
-        reactionsEnabled: '1',         // 启用 reactions
-        emitMetadata: '0',             // 不发送讨论元数据
-        inputPosition: 'bottom',       // 评论框位置: top 或 bottom
-        lang: 'zh-CN',                 // 语言: zh-CN, en-US 等
-      }
-    }),
-  ],
+  afterBody: [],
 
   /**
    * footer 组件 - 页面底部的页脚
