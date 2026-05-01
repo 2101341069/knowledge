@@ -51,7 +51,7 @@ jobs:
       
       # 5. 上传构建产物
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
   
@@ -68,4 +68,4 @@ jobs:
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
